@@ -1,2 +1,3 @@
-uncompressed.txt
+*.txt
+*.diff
 music

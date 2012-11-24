@@ -1,10 +1,11 @@
 #!/usr/bin/ruby -w
 
-TXT_FILE = "uncompressed.txt"
+IN_FILE = "uncompressed.txt"
+OUT_FILE = "converted.txt"
 
 def validate
-  if File.exist?(TXT_FILE)
-    count = `wc -l #{TXT_FILE}`.to_i
+  if File.exist?(IN_FILE)
+    count = `wc -l #{IN_FILE}`.to_i
   else
     count = 0
   end
