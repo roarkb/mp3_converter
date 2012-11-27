@@ -6,22 +6,43 @@ require "helper"
 
 count = validate
 
-OUT_FH = File.open(OUT_FILE, "w")
+LOG = "converted.log"
+LOG_FH = File.open(LOG, "w")
 
 puts "converting #{count} files to mp3...\n\n"
 
 File.readlines(IN_FILE).each do |e|
-  puts input = e.chomp
+  input = e.chomp
   output = input.gsub(/\.[a-zA-Z]*$/, ".mp3")
+  puts "song: #{input}"
   
   TagLib::FileRef.open(input) do |ref|
     t = ref.tag
-    system("lame -b 320 --tt \"#{t.title}\" --ta \"#{t.artist}\" --tl \"#{t.album}\" --tn \"#{t.track}\" \"#{input}\" \"#{output}\"")
+    system(%Q{lame -b 320 --tt "#{t.title}" --ta "#{t.artist}" --tl "#{t.album}" --tn "#{t.track}" "#{input}" "#{output}"})
   end
   
+  if File.exists?(output)
+    puts "created: #{output}"
+    system(%Q{rm "#{input}"})
+    puts "deleted: #{input}"
+    LOG_FH.puts input
+  else
+    abort "conversion failed on:\n#{input}"
+  end
+
   puts
-  OUT_FH.puts input
 end
 
-OUT_FH.close
-puts "complete"
+LOG_FH.close
+
+diff = `diff #{IN_FILE} #{LOG}`
+
+if diff != ""
+  f = "converted.diff"
+  fh = File.open(f, "w")
+  fh.puts diff
+  fh.close
+  abort "#{IN_FILE} and #{LOG} do not match.  see #{f}"
+else
+  puts "complete"
+end

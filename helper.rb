@@ -1,7 +1,6 @@
 #!/usr/bin/ruby -w
 
 IN_FILE = "uncompressed.txt"
-OUT_FILE = "converted.txt"
 
 def validate
   if File.exist?(IN_FILE)
