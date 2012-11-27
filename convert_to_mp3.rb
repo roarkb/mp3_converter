@@ -2,9 +2,16 @@
 
 require "rubygems"
 require "taglib"
-require "helper"
 
-count = validate
+IN_FILE = "uncompressed.txt"
+
+if File.exist?(IN_FILE)
+  count = `wc -l #{IN_FILE}`.to_i
+else
+  count = 0
+end
+
+abort "no files found" if count == 0
 
 LOG = "converted.log"
 LOG_FH = File.open(LOG, "w")
