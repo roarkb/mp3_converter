@@ -2,7 +2,7 @@
 
 require "find"
 
-abort "USAGE: '#{$0} <path to music directory>'" unless ARGV.first
+abort "USAGE: '#{$0} <full path to music directory>'" unless ARGV.first
 
 FORMATS = %w[ aif aiff wav WAV ] # add the formats you want to retrieve
 IN_FILE = "uncompressed.txt"
