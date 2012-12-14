@@ -18,7 +18,6 @@ LOG_FH = File.open(LOG, "w")
 
 puts "converting #{count} files to mp3...\n\n"
 
-# TODO: some files with special characters get rejected
 File.readlines(IN_FILE).each do |e|
   input = e.chomp
   output = input.gsub(/\.[a-zA-Z]*$/, ".mp3")
