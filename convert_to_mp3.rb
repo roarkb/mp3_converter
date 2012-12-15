@@ -30,7 +30,7 @@ File.readlines(IN_FILE).each do |e|
   
   if File.exists?(output)
     puts "created: #{output}"
-    system(%Q{rm "#{input}"})
+    system(%Q{rm '#{input}'})
     puts "deleted: #{input}"
     LOG_FH.puts input
     LOG_FH.flush
