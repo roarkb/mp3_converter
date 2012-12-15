@@ -25,7 +25,7 @@ File.readlines(IN_FILE).each do |e|
   
   TagLib::FileRef.open(input) do |ref|
     t = ref.tag
-    system(%Q{lame -b 320 --tt "#{t.title}" --ta "#{t.artist}" --tl "#{t.album}" --tn "#{t.track}" "#{input}" "#{output}"})
+    system(%Q{lame -b 320 --tt '#{t.title}' --ta '#{t.artist}' --tl '#{t.album}' --tn '#{t.track}' '#{input}' '#{output}'})
   end
   
   if File.exists?(output)
