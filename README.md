@@ -28,13 +28,13 @@ and let you work out the conflict
 
 TROUBLESHOOTING:
 
-apologies, this script is not perfect but it is cautious.  it will fail to convert some files with 
-special characters in the name.  in that event the script will abort without deleting the original
+apologies, this script is not yet perfect but it is cautious.  it will fail to convert files with 
+single-quote characters in the name.  in that event the script will abort without deleting the original
 file.  to skip the file simply search for the offending file in uncompressed.txt, delete it and
 everything above it then resume the conversion.  at the end of the entire run you can re-run
 get_uncompressed_songs.rb to find all skipped songs and convert them by hand
 
 TODO's:
 
-* some files with special characters get rejected
+* properly escape file names with single-quotes
 * skip over rejects and write them to a log
