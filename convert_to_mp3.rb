@@ -3,6 +3,9 @@
 require "rubygems"
 require "taglib"
 
+# TODO: use lame_adapter gem:
+# http://rubydoc.info/gems/lame_adapter/0.1/frames
+
 IN_FILE = "uncompressed.txt"
 
 if File.exist?(IN_FILE)
