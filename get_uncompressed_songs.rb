@@ -4,7 +4,11 @@ require "find"
 
 abort "USAGE: '#{$0} <full path to music directory>'" unless ARGV.first
 
-FORMATS = %w[ aif aiff wav WAV ] # add the formats you want to retrieve
+
+# add the formats you want to retrieve
+#FORMATS = %w[ aif aiff wav WAV ]
+FORMATS = %w[ flac ]
+
 IN_FILE = "uncompressed.txt"
 IN_FH = File.open(IN_FILE, "w")
 
